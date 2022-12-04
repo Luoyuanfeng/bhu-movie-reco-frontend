@@ -1,29 +1,34 @@
 <template>
   <div class="full">
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handelSelect" :ellipsis="false" router>
+    <el-menu class="sticky" :default-active="activeIndex" mode="horizontal" :ellipsis="false" router>
       <img class="logo-cls" src="../assets/logo.png" />
       <div class="flex-grow" />
       <el-menu-item :disabled="!isLogin" index="/reco">推荐列表</el-menu-item>
       <el-menu-item :disabled="!isLogin" index="/history">观看历史</el-menu-item>
       <div class="mrg-right" />
     </el-menu>
+    <LoginPage v-if="!isLogin" @login="handelLogin"/>
     <router-view></router-view>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from "vue-router"
+import LoginPage from './LoginPage.vue'
 
-export default {
-  data() {
-    return {
-      isLogin: false  
-    }
-  },
-  setup (props, context) {
-    return {}
-  },
-  name: 'MainPage'
+const router = useRouter()
+const activeIndex = ref('')
+const isLogin = ref(false)
+
+const handelLogin = function(uid) {
+  console.log('======>' + uid);
+  sessionStorage.setItem('bmr-uid', uid)
+  isLogin.value = true
+  activeIndex.value = '/history'
+  router.push("/history")
 }
+
 
 </script>
 
@@ -44,5 +49,10 @@ export default {
 }
 .mrg-right {
   width: 60px;
+}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
 </style>

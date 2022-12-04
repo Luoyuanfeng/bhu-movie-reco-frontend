@@ -4,29 +4,24 @@
             <div class="login_txt">登录</div>
             <el-form class="form_item" :model="form" label-width="0px" label-position="left" size="large">
                 <el-form-item class="input" label="">
-                    <el-input placeholder="请输入用户名" v-model="form.name" clearable />
-                </el-form-item>
-                <el-form-item class="input" label="">
-                    <el-input placeholder="请输入密码" v-model="form.pwd" clearable show-password/>
+                    <el-input placeholder="请输入用户id" v-model="uid" clearable />
                 </el-form-item>
                 <el-form-item>
-                    <el-button class="btn" type="primary">登录</el-button>
+                    <el-button class="btn" type="primary" @click="handelClick">登录</el-button>
                 </el-form-item>
             </el-form>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-        form: {
-            name: "",
-            pwd: ""
-        }  
-    }
-  }
+<script setup>
+import { defineProps, defineEmits, ref } from 'vue'
+const emit = defineEmits(['login'])
+
+const uid = ref(null)
+
+const handelClick = function  () {
+    emit('login', uid.value)
 }
 </script>
 
@@ -34,7 +29,6 @@ export default {
 .login_form {
     margin-top: 100px;
     width: 600px;
-    height: 350px;
     border-radius: 10px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
     background-color: white;
@@ -68,5 +62,6 @@ export default {
     width: 100%;
     min-height: 45px;
     margin-top: 35px;
+    margin-bottom: 10px;
 }
 </style>
