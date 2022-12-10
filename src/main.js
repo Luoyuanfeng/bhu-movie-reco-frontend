@@ -4,8 +4,8 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import { createRouter,createWebHashHistory } from "vue-router";
 
-import MainPage from './components/MainPage.vue'
 import RecoPage from './components/RecoPage.vue'
+import RecallPage from './components/RecallPage.vue'
 import HistoryPage from './components/HistoryPage.vue'
 
 
@@ -14,7 +14,8 @@ window.addEventListener("beforeunload", function (e) {
 });
 
 const routes = [
-    { path: '/reco', component: RecoPage },
+    { path: '/sort', component: RecoPage },
+    { path: '/recall', component: RecallPage },
     { path: '/history', component: HistoryPage },
 ]
   

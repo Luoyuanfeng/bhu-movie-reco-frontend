@@ -19,12 +19,31 @@ function history(callback) {
     })
 }
 
-function predict(callback) {
+function sort(callback) {
     let uid = sessionStorage.getItem('bmr-uid')
     if (!uid) {
         return
     }
-    axios.get('/api/reco/predict?custId=' + uid).then(res => {
+    axios.get('/api/reco/sort?custId=' + uid).then(res => {
+        let resp = res.data
+        console.log(resp)
+        if (resp.code != 0) {
+            alert("请求失败：" + resp.message)
+        } else {
+            callback(resp.data)
+        }
+    }).catch(err => {    
+        console.log(err);
+        alert("请求异常" + err)
+    })
+}
+
+function recall(callback) {
+    let uid = sessionStorage.getItem('bmr-uid')
+    if (!uid) {
+        return
+    }
+    axios.get('/api/reco/recall?custId=' + uid).then(res => {
         let resp = res.data
         console.log(resp)
         if (resp.code != 0) {
@@ -40,5 +59,6 @@ function predict(callback) {
 
 export default {
     history: history,
-    predict: predict
+    recall: recall,
+    sort: sort
 }

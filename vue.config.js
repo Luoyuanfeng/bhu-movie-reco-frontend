@@ -7,7 +7,7 @@ module.exports = defineConfig({
       enabled: true,
       context: '/api',
       options: {
-        target: 'http://127.0.0.1:17654',
+        target: 'http://82.156.34.76:17654',
         changeOrigin: true,
         ws: true,                                            //websocket
         pathRewrite: {

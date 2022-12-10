@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MovieItem v-for="(item, index) in items" :key="index" :data="item" :isHistory="true"/>
+        <MovieItem v-for="(item, index) in items" :key="index" :data="item"/>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ const items = ref(null)
 
 onMounted(() => {
   console.log('onMounted')
-  net.history((list) => {
+  net.recall((list) => {
     items.value = list
   })
 })

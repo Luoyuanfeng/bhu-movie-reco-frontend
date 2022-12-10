@@ -3,7 +3,8 @@
     <el-menu class="sticky" :default-active="activeIndex" mode="horizontal" :ellipsis="false" router>
       <img class="logo-cls" src="../assets/logo.png" />
       <div class="flex-grow" />
-      <el-menu-item :disabled="!isLogin" index="/reco">推荐列表</el-menu-item>
+      <el-menu-item :disabled="!isLogin" index="/sort">推荐列表</el-menu-item>
+      <el-menu-item :disabled="!isLogin" index="/recall">召回列表</el-menu-item>
       <el-menu-item :disabled="!isLogin" index="/history">观看历史</el-menu-item>
       <div class="mrg-right" />
     </el-menu>

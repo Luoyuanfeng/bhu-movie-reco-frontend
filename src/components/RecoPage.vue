@@ -14,7 +14,7 @@ const items = ref(null)
 
 onMounted(() => {
   console.log('onMounted')
-  net.predict((list) => {
+  net.sort((list) => {
     items.value = list
   })
 })
