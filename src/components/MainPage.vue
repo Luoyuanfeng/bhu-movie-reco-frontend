@@ -30,8 +30,8 @@ const handelLogin = function(uid) {
   sessionStorage.setItem('bmr-uid', uid)
   showUid.value = uid
   isLogin.value = true
-  activeIndex.value = '/history'
-  router.push("/history")
+  activeIndex.value = '/sort'
+  router.push("/sort")
 }
 
 
